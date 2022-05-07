@@ -7,6 +7,7 @@ import {
   HomeIcon,
   LightningBoltIcon,
   UserIcon,
+  SearchIcon,
 } from '@heroicons/react/outline';
 
 const Header = () => {
@@ -17,7 +18,7 @@ const Header = () => {
         <HeaderItem title="TRENDING" Icon={LightningBoltIcon} />
         <HeaderItem title="VERIFIED" Icon={BadgeCheckIcon} />
         <HeaderItem title="COLLECTIONS" Icon={CollectionIcon} />
-        <HeaderItem title="SEARCH" Icon={HomeIcon} />
+        <HeaderItem title="SEARCH" Icon={SearchIcon} />
         <HeaderItem title="ACCOUNT" Icon={UserIcon} />
       </div>
       <Image
