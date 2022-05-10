@@ -32,7 +32,7 @@ const Thumbnail = ({ result }: Props) => {
           <h2 className="mt-1 text-2xl text-white transition-all duration-100 ease-in-out group-hover:font-bold">
             {result.title || result.original_name}
           </h2>
-          <p className="flex items-center opacity-0 group-hover:opacity-100 transition-all duration-100 ease-in-out">
+          <p className="flex items-center md:opacity-0 group-hover:opacity-100 transition-all duration-100 ease-in-out">
             {result.media_type && `${result.media_type.toUpperCase()} •`}{' '}
             {releaseYear} • <ThumbUpIcon className="h-5 mx-2" />{' '}
             {result.vote_count}
