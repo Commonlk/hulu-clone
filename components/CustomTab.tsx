@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { GetServerSideProps } from 'next';
 import axios from 'axios';
 import TV, { Season } from '../models/tv';
 import Image from 'next/image';
+import { PlayIcon } from '@heroicons/react/outline';
 
 const BASE_URL = 'https://image.tmdb.org/t/p/original';
 
@@ -73,11 +73,12 @@ const CustomTab = ({ content }: Props) => {
               ))}
             </select>
           </div>
-          <div className="sm:grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+          <div className="sm:grid md:grid-cols-2 md:mr-5 xl:grid-cols-3 gap-10">
             {season?.episodes.map((episode) => (
               <div key={episode.id} className="my-6 pr-5 md:pr-0 md:my-0">
-                <div className="flex items-center">
-                  <div className="w-1/2">
+                <div className="flex items-center md:flex-col md:items-start">
+                  <div className="group cursor-pointer relative w-1/2 md:w-full">
+                    <PlayIcon className="absolute w-auto h-1/3 z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-100" />
                     <Image
                       src={BASE_URL + episode.still_path}
                       layout="responsive"
@@ -85,9 +86,9 @@ const CustomTab = ({ content }: Props) => {
                       height={90}
                     />
                   </div>
-                  <p className="ml-3 font-bold text-xs md:ml-0 md:mt-3">{`S${seasonSelector} E${episode.episode_number} • ${episode.name}`}</p>
+                  <p className="ml-3 font-bold text-xs md:text-sm md:ml-0 md:mt-2">{`S${seasonSelector} E${episode.episode_number} • ${episode.name}`}</p>
                 </div>
-                <div className="mt-2 text-xs font-semibold">
+                <div className="mt-2 text-xs font-semibold md:text-sm">
                   <p>{episode.overview}</p>
                   <p className="mt-1 text-gray-400">{`${episode.runtime} min • TV • Airdate: ${episode.air_date}`}</p>
                 </div>
