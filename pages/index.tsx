@@ -7,6 +7,7 @@ import Nav from '../components/Nav';
 import Results from '../components/Results';
 import { requests } from '../utils/requests';
 import Movie from '../models/movie';
+import axios from 'axios';
 
 interface Props {
   results: Movie[];
@@ -33,14 +34,14 @@ export const getServerSideProps: GetServerSideProps = async context => {
 
   const genre = genreQuery as string;
 
-  const request = await fetch(
+  const { data } = await axios.get(
     `https://api.themoviedb.org/3/${
       requests[genre]?.url || requests.trending.url
     }`
-  ).then(res => res.json());
+  );
 
   return {
-    props: { results: request.results },
+    props: { results: data.results },
   };
 };
 
